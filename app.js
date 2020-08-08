@@ -39,10 +39,8 @@ const displayContr = (() => {
     });
   };
 
-  const winnerPopup = player => {
-    popup.querySelector(
-      "h2"
-    ).textContent = `Congratulations ${player} won the game!`;
+  const winnerPopup = message => {
+    popup.querySelector("h2").textContent = message;
     popup.classList.remove("hide");
     resetGame();
   };
@@ -103,11 +101,9 @@ const gameFlow = (() => {
     });
   };
 
-  const endGame = player => {
-    // make the cells unselecatable
-
+  const endGame = message => {
     //launch the modal
-    displayContr.winnerPopup(player);
+    displayContr.winnerPopup(message);
     // empty the array
     gameBoard.boardArray = ["", "", "", "", "", "", "", "", ""];
     // reset the game
@@ -141,7 +137,7 @@ const gameFlow = (() => {
         gameBoard.boardArray[5] == "X" &&
         gameBoard.boardArray[8] == "X")
     ) {
-      endGame(playerOne);
+      endGame(`Congratulations ${playerOne} won!`);
     } else if (
       (gameBoard.boardArray[0] == "O" &&
         gameBoard.boardArray[1] == "O" &&
@@ -168,9 +164,9 @@ const gameFlow = (() => {
         gameBoard.boardArray[5] == "O" &&
         gameBoard.boardArray[8] == "O")
     ) {
-      endGame(playerTwo);
+      endGame(`Congratulations ${playerOne} won!`);
     } else if (gameBoard.boardArray.every(item => item.length >= 1)) {
-      endGame("draw");
+      endGame("It's a draw :(");
       // Thius needs updating
     }
   };
