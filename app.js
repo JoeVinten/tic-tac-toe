@@ -29,16 +29,20 @@ const displayContr = (() => {
     e.target.textContent = symbol;
   };
 
+  const popup = document.querySelector(".winner-overlay");
+
   const resetGame = () => {
     const rstBtn = document.querySelector(".reset");
     rstBtn.addEventListener("click", () => {
-      renderBoard(gameBoard.boardArray);
+      popup.classList.add("hide");
+      document.querySelector(".board-container").innerHTML = "";
     });
   };
 
   const winnerPopup = player => {
-    const popup = document.querySelector(".winner-box");
-    popup.firstChild.textContent = `Congratulations ${player} won the game!`;
+    popup.querySelector(
+      "h2"
+    ).textContent = `Congratulations ${player} won the game!`;
     popup.classList.remove("hide");
     resetGame();
   };
@@ -167,6 +171,7 @@ const gameFlow = (() => {
       endGame(playerTwo);
     } else if (gameBoard.boardArray.every(item => item.length >= 1)) {
       endGame("draw");
+      // Thius needs updating
     }
   };
 
@@ -176,5 +181,3 @@ const gameFlow = (() => {
 })();
 
 gameFlow.startGame();
-
-//  Need to track the cells state, and constantly check for a win. The winning combos are:

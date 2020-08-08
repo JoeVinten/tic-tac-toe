@@ -1,6 +1,8 @@
 _TODO_
 
-- Need to sort out the boxes and get rid of the event listeners on it
+- Style properly.
+- Make it possibly to "reset with new players" or with pervious players.
+- Make an unbeatable AI.
 
 STYLYING
 
